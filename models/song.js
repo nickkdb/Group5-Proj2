@@ -27,15 +27,11 @@ module.exports = function(sequelize, DataTypes) {
             }
           },
     });
-  
+
     song.associate = function(models) {
-        song.belongsTo(models.playlist, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
-      };
-  
+      song.belongsToMany(models.playlist, {as: 'song', through: 'playlist_song', foreignKey: 'songId'});
+    };  
+      
     return song;
   };
   

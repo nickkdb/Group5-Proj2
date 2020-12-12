@@ -22,13 +22,17 @@ module.exports = function(sequelize, DataTypes) {
     });
   
     playlist.associate = function(models) {
-        song.belongsTo(models.user, {
+        playlist.belongsTo(models.user, {
           foreignKey: {
             allowNull: false
           }
         });
       };
   
+      playlist.associate = function(models) {
+        playlist.belongsToMany(models.song, {as: 'playlist', through: 'playlist_song', foreignKey: 'playlistId'});
+      };  
+
     return playlist;
   };
   
