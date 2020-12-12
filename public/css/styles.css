@@ -1,6 +1,7 @@
 .hero {
-    background-image: url("images/record-shop.jpg");
+    background-image: url("..images/record-shop.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 600px;
 }
