@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             len: [1]
         },
-        type: {
+        category: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {

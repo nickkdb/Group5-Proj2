@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
               len: [1]
             }
           },
-        category: {
+        genre: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
