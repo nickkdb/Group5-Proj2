@@ -20,7 +20,8 @@ module.exports = function(sequelize, DataTypes) {
             }
           }
     });
-  
+
+  // connect playlist to a user
     playlist.associate = function(models) {
         playlist.belongsTo(models.user, {
           foreignKey: {
@@ -28,7 +29,9 @@ module.exports = function(sequelize, DataTypes) {
           }
         });
       };
+
   
+    // connect playlist to songs
       playlist.associate = function(models) {
         playlist.belongsToMany(models.song, {as: 'playlist', through: 'playlist_song', foreignKey: 'playlistId'});
       };  

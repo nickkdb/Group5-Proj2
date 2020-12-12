@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
           }
     });
   
-
+// connect user to playlists
     user.associate = function(models) {
       user.hasMany(models.playlist, {
         onDelete: "cascade"

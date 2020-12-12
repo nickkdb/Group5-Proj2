@@ -28,6 +28,7 @@ module.exports = function(sequelize, DataTypes) {
           },
     });
 
+// connect songs to playlists
     song.associate = function(models) {
       song.belongsToMany(models.playlist, {as: 'song', through: 'playlist_song', foreignKey: 'songId'});
     };  
