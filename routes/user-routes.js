@@ -19,6 +19,19 @@ module.exports = function(app) {
     });
   });
 
+    // grab a specfic user from the db by name & pw to validate login
+    app.get("/api/login/:username/:password", function(req, res) {
+      db.user.findOne({
+        where: {
+          username: req.params.username,
+          password: req.params.password
+
+        }
+      }).then(function(dbUser) {
+        res.json(dbUser);
+      });
+    });
+
   // grab all the playlists a specific user has
   app.get("/api/users/:id/playlists", function(req, res) {
     db.user.findOne({

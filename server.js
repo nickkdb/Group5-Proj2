@@ -15,6 +15,7 @@ app.use(express.static("public"));
 // Routes for interacting with the DB
 require("./routes/user-routes.js")(app);
 require("./routes/playlist-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 // Connect to the DB
 db.sequelize.sync().then(function() {
