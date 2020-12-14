@@ -1,5 +1,6 @@
 body {
     background-color: #333;
+    color: #fff;
 }
 .uk-navbar-container:not(.uk-navbar-transparent) {
     background: #000;
@@ -39,11 +40,14 @@ body {
     animation: slideInLeft;
     -moz-animation: slideInLeft;
     -webkit-animation: slideInLeft;
-    animation-duration: 1.5s;
-    -moz-animation-duration: 1.5s;
-    -webkit-animation-duration: 1.5s;
+    animation-duration: 0.75s;
+    -moz-animation-duration: 0.75s;
+    -webkit-animation-duration: 0.75s;
 }
+/* I tried to do a delay with the slide in animation, but I couldn't get the element to hide during the delay
+and remain visible after the animation was complete */
 #wire {
+/*     visibility: hidden; */
     margin-top: 0;
     margin-left: auto;
     margin-right: auto;
@@ -52,10 +56,15 @@ body {
     animation: slideInRight;
     -moz-animation: slideInRight;
     -webkit-animation: slideInRight;
-    animation-duration: 3s;
-    -moz-animation-duration: 3s;
-    -webkit-animation-duration: 3s;
+    animation-duration: 0.75s;
+    -moz-animation-duration: 0.75s;
+    -webkit-animation-duration: 0.75s;
+/*     animation-delay: 0.75s;
+    -moz-animation-delay: 0.75s;
+    -webkit-animation-delay: 0.75s;
+    animation-fill-mode: forwards; */
 }
+
 
 #login-links-box {
     position: absolute;
@@ -71,9 +80,9 @@ body {
     animation-duration: 2s;
     -moz-animation-duration: 2s;
     -webkit-animation-duration: 2s;
-    animation-delay: 3s;
-    -moz-animation-delay: 3s;
-    -webkit-animation-delay: 3s;
+    animation-delay: 1.75s;
+    -moz-animation-delay: 1.75s;
+    -webkit-animation-delay: 1.75s;
     animation-fill-mode: forwards;
 }
 /* ================================================= */
