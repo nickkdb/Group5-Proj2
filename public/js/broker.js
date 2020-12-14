@@ -1,5 +1,13 @@
 $(document).ready (function(){
 
+    var allSongs;
+    $.ajax("/api/songs", {
+        type: "GET"
+    }).then (function(results) {
+        allSongs = results;
+        console.log(allSongs)
+    });
+
     // function to send a new user to db
     $("#createUser").on("submit", function(event) {
 
@@ -46,7 +54,10 @@ $(document).ready (function(){
                 data: user
               }).then(
                 function(results) {
-                    if (results.username === user.username && results.password === user.password) {
+                    if (results === null) {
+                        console.log('Invalid login results')
+                    }
+                    else if (results.username === user.username && results.password === user.password) {
                         console.log('Good!');
                     }
                     else {
@@ -98,20 +109,74 @@ $(document).ready (function(){
             genre: $('#genre').val().trim(),
             playlistId: $('#playlistId').val().trim(),
             };
-    
-            console.log(newSong);
-        
-            // Send the POST request.
-            $.ajax("/api/songs", {
-            type: "POST",
-            data: newSong
-            }).then(
-            function(results) {
-                console.log("created new song");
-                // need to decide where to redirect users
-                location.reload();
+
+            var querySong = {    
+                title: $("#songTitle").val().trim(),
+                artist: $("#artist").val().trim(),
+                album: $('#album').val().trim()
             }
-            );
+            console.log(querySong);
+
+            var match;
+            var oldId;
+
+            for (let i=0; i < allSongs.length; i++) {
+                if (querySong.title === allSongs[i].title && querySong.artist === allSongs[i].artist && querySong.album === allSongs[i].album ) {
+                    match = true
+                    oldId = allSongs[i].id
+                }
+                else {
+                    match = false;
+                }
+            }
+
+            if (match === true) {
+                $.ajax("/api/ps", {
+                    type: "POST",
+                    data: {playlistId: newSong.playlistId, songId: oldId}
+                })
+            }
+            else {
+                $.ajax("/api/songs", {
+                    type: "POST",
+                    data: newSong
+                    }).then(
+                    function(results) {
+                        console.log("created new song");
+                        // need to decide where to redirect users
+                        location.reload();
+                    }
+                    );
+            }
+    
+            // console.log(newSong);
+     
+
+            // $.ajax("/api/songs", {
+            //     type: "GET",
+            //     data: querySong
+            // }).then(function(results){
+            //     if (results === null) {
+            //     // Send the POST request.
+            //     $.ajax("/api/songs", {
+            //         type: "POST",
+            //         data: newSong
+            //         }).then(
+            //         function(results) {
+            //             console.log(results);
+            //             // need to decide where to redirect users
+            //             // location.reload();
+            //             }
+            //         );
+            //     }
+            //     else {
+            //         $.ajax("/api/ps", {
+            //             type: "POST",
+            //             data: {playlistId: newSong.playlistId, songId: results.id}
+            //         })
+            //     }
+            // })
+        
         });
 })
   

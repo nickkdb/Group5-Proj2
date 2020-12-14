@@ -14,12 +14,15 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       },
-      include: [{
-        model: db.song
-      },
-      {
-        model: db.user
-      }]
+      include:
+      [
+        {
+            model: db.song,
+            as: 'playlistSong',
+            through: 'playlist_song',
+            foreignKey: 'playlistId'
+        }
+    ]
     }).then(function(dbPlaylist) {
       res.json(dbPlaylist);
     });
@@ -35,13 +38,36 @@ module.exports = function(app) {
     // create a new song and add to playlist_songs
     app.post("/api/songs", function(req, res) {
       db.song.create(req.body).then(function(dbSong) {
-
-        // subsequently associate the new song to its playlist
         let ps = {songId: dbSong.id, playlistId: req.body.playlistId}
         db.playlist_song.create(ps)
+      })
+    });
+
+    app.post("/api/ps", function(req, res){
+      db.playlist_song.create(req.body).then(function(db){
+        res.json(db);
+      })
+    })
+
+    app.get("/api/songs", function(req, res) {
+      db.song.findAll({attributes: ['id', 'title', 'artist', 'album']}).then(function(dbSong) {
+        res.json(dbSong);
       });
     });
 
+    // route for checking if a song matches a song already in db
+    // app.get("/api/songs", function(req, res) {
+    //   db.song.findOne(
+    //     {attributes: ['title', 'artist', 'album']},
+    //     {where: {
+    //       title: req.body.title,
+    //       artist: req.body.artist,
+    //       album: req.body.album
+    //     }
+    //   }).then(function(dbSong) {
+    //     res.json(dbSong);
+    //   });
+    // });
 
   // update an existing playlist
   app.put("/api/playlists", function(req, res) {
