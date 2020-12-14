@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/nickkdb/Group5-Proj2#readme",
   "dependencies": {
+    "animate.css": "^4.1.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
   }

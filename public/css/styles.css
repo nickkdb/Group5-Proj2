@@ -1,10 +1,107 @@
-.hero {
-    background-image: url("images/record-shop.jpg");
+body {
+    background-color: #333;
+    color: #fff;
+}
+.uk-navbar-container:not(.uk-navbar-transparent) {
+    background: #000;
+}
+.uk-navbar-nav>li>a {
+    color: #fff;
+    font-family: 'Audiowide', cursive;
+}
+.uk-margin {
+    margin: 0px!important;
+}
+#hero {
+    background-image: url("../images/record-shop.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 600px;
+    position: relative; /* this is imporatnt for the login-link-box to apear in the correct place */
+    margin-bottom: 20px;
 }
 
-body {
-    background-color: #333333;
+/* ==========  This is the 5wire and login-links animation.  ================ */
+.animation-box {
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    position: relative;
+    top: 16%;
+    max-width: 60%;
+}
+#five {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 5;
+    position: absolute;
+    animation: slideInLeft;
+    -moz-animation: slideInLeft;
+    -webkit-animation: slideInLeft;
+    animation-duration: 0.75s;
+    -moz-animation-duration: 0.75s;
+    -webkit-animation-duration: 0.75s;
+}
+/* I tried to do a delay with the slide in animation, but I couldn't get the element to hide during the delay
+and remain visible after the animation was complete */
+#wire {
+/*     visibility: hidden; */
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 10;
+    position: absolute;
+    animation: slideInRight;
+    -moz-animation: slideInRight;
+    -webkit-animation: slideInRight;
+    animation-duration: 0.75s;
+    -moz-animation-duration: 0.75s;
+    -webkit-animation-duration: 0.75s;
+/*     animation-delay: 0.75s;
+    -moz-animation-delay: 0.75s;
+    -webkit-animation-delay: 0.75s;
+    animation-fill-mode: forwards; */
+}
+
+
+#login-links-box {
+    position: absolute;
+    left: 45%;
+    bottom: 25%;
+}
+/* I still need to make this mobile friendly. It works but looks wonky. */
+.login-links {
+    opacity: 0;
+    animation: fadeIn;
+    -moz-animation: fadeIn;
+    -webkit-animation: fadeIn;
+    animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+    animation-delay: 1.75s;
+    -moz-animation-delay: 1.75s;
+    -webkit-animation-delay: 1.75s;
+    animation-fill-mode: forwards;
+}
+/* ================================================= */
+
+#join {
+    background-color: #78d13f;
+    color: #333;
+    border: none;
+    margin: 20px;
+}
+
+#login {
+    background-color: #fff;
+    color: #333;
+    border: none;
+    margin: 20px;
+}
+
+h1 {
+    color: #fff;
+    font-family: 'Audiowide', cursive;
 }

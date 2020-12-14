@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.16/dist/css/uikit.min.css" />
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <title>5Wire</title>
 </head>
+
 <body>
-    <script language="javascript" type="text/javascript" 
-    src="js/header.js"></script>
-    <section class="hero"></section>
+    <script language="javascript" type="text/javascript" src="js/header.js"></script>
+    <section id="hero">
+        <div class="animation-box">
+            <img src="images/5.png" height="auto" id="five">
+            <img src="images/wire.png" height="auto" id="wire">
+        </div>
+        <div id="login-links-box">
+            <a id="login" class="uk-button uk-button-default login-links" href="#">Login</a>
+            <a id="join" class="uk-button uk-button-default login-links" href="#">Join</a></div>
+    </section>
+    <section class="uk-container">
+        <div class="uk-column-1-2">
+            <div><h1>Featured Playlist</h1>
+             <p id="featured">This is where the featured playlist will go </p>
+            </div>
+            <div><p>Create your own playlists and listen to music for free!</p></div>
+        </div>
+
+    </section>
 
 
 
-    <script language="javascript" type="text/javascript" 
-    src="js/footer.js"></script>
+    <script language="javascript" type="text/javascript" src="js/footer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.16/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.16/dist/js/uikit-icons.min.js"></script>
 </body>
+
 </html>
