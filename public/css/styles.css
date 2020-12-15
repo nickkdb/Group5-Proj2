@@ -105,3 +105,10 @@ h1 {
     color: #fff;
     font-family: 'Audiowide', cursive;
 }
+.pure-form {
+    background-color: #fff;
+    color: #333;
+    border: 100px;
+    padding: 250px;
+    margin: 20px;
+}
