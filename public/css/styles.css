@@ -107,8 +107,12 @@ h1 {
 }
 .pure-form {
     background-color: #fff;
-    color: #333;
+    color: #fff;
     border: 100px;
     padding: 250px;
-    margin: 20px;
+    background-image: url("../images/Loginbackground.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Audiowide', cursive;
 }
