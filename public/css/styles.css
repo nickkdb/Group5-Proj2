@@ -105,22 +105,40 @@ h1 {
     color: #fff;
     font-family: 'Audiowide', cursive;
 }
-.pure-form {
-    background-color: #fff;
-    color: #fff;
-    border: 100px;
-    padding: 250px;
-}
 
-.join-form {
-    margin-right: auto;
-    margin-left: auto;
-    background-color: gray;
-    color: white;
-    max-width: 500px;
-    background-image: url("../images/Loginbackground.jpg");
+.form {
+    background-image: url("../images/loginbackgroundphoto.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'Audiowide', cursive;
+    height: 1200px;
 }
+.uk-form-label {
+    color: #fff;
+}
+.uk-margin {
+    background-color: #0000005e;
+}
+.uk-form-horizontal .uk-form-label {
+    width: 200px;
+    margin-top: 15px;
+    margin: 32px;
+}
+.uk-form-horizontal .uk-form-controls {
+    margin: 32px;
+}
+.uk-form-horizontal {
+    color: #fff;
+    margin: auto;
+    max-width: 500px;
+}
+
+#forgot {
+ font-style: italic;
+ color: white;
+ text-decoration: none;
+ margin-left: 43px;
+}
+#forgot:hover {
+    color: #78d13f;
+   }
