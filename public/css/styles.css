@@ -112,3 +112,11 @@ h1 {
     padding: 250px;
     margin: 20px;
 }
+
+.join-form {
+    margin-right: auto;
+    margin-left: auto;
+    background-color: gray;
+    color: white;
+    max-width: 500px;
+}
