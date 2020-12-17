@@ -1,5 +1,6 @@
 $(document).ready (function(){
 
+    // grab all songs to use as needed for validation
     var allSongs;
     $.ajax("/api/songs", {
         type: "GET"
@@ -178,6 +179,30 @@ $(document).ready (function(){
             // })
         
         });
+
+
+    // Grab spotify tokens and make a call 
+    $("#spotify").on("submit", function(event){
+        event.preventDefault();
+    
+        $.ajax("/api/tokens", {
+            type: "GET"
+        }).then(function(key){
+            $.ajax("https://api.spotify.com/v1/search?q=album%3Arecovery%20artist%3Aeminem&type=album", {
+                type: "GET",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `${key.tokenType} ${key.accessToken}`
+                }
+            }).then(function(results){
+                console.log(results)
+            });
+            
+        })
+
+    })
+
 })
   
   

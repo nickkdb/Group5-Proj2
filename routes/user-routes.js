@@ -35,15 +35,15 @@ module.exports = function(app) {
     //   });
     // });
 
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    res.json(req.user);
-  });
+  // app.post("/api/login", passport.authenticate("local"), function(req, res) {
+  //   res.json(req.user);
+  // });
 
-  //route for logging a user out
-  app.get("/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
-  });
+  // //route for logging a user out
+  // app.get("/logout", function(req, res) {
+  //   req.logout();
+  //   res.redirect("/");
+  // });
 
   // grab all the playlists a specific user has
   app.get("/api/users/:id/playlists", function(req, res) {
@@ -80,18 +80,18 @@ module.exports = function(app) {
   });
 
   //route for signing up a user.
-  app.post("/api/signup", function(req, res) {
-    db.user.create({
-      username: req.body.username,
-      password: req.body.password
-    })
-      .then(function() {
-        res.redirect(307, "/api/login");
-      })
-      .catch(function(err) {
-        res.status(401).json(err);
-      });
-  });
+  // app.post("/api/signup", function(req, res) {
+  //   db.user.create({
+  //     username: req.body.username,
+  //     password: req.body.password
+  //   })
+  //     .then(function() {
+  //       res.redirect(307, "/api/login");
+  //     })
+  //     .catch(function(err) {
+  //       res.status(401).json(err);
+  //     });
+  // });
 
   // delete an existing user
   app.delete("/api/users/:id", function(req, res) {
