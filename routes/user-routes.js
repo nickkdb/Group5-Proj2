@@ -23,17 +23,17 @@ module.exports = function(app) {
   });
 
     // grab a specfic user from the db by name & pw to validate login
-    // app.get("/api/login/:username/:password", function(req, res) {/
-    //   db.user.findOne({
-    //     where: {
-    //       username: req.params.username,
-    //       password: req.params.password
+    app.get("/api/login/:username/:password", function(req, res) {
+      db.user.findOne({
+        where: {
+          username: req.params.username,
+          password: req.params.password
 
-    //     }
-    //   }).then(function(dbUser) {
-    //     res.json(dbUser);
-    //   });
-    // });
+        }
+      }).then(function(dbUser) {
+        res.json(dbUser);
+      });
+    });
 
   // app.post("/api/login", passport.authenticate("local"), function(req, res) {
   //   res.json(req.user);
