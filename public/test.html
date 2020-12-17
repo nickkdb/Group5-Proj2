@@ -8,41 +8,55 @@
 <body>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="./js/broker.js"></script>
-    <h2>Create a user</h2>
+    <h1>Create a user</h1>
     <form id="createUser">
-        <input id="userName" name="userName" type="text">
-        <input id="pw" name="pw" type="password">
+        <input id="userName" name="userName" type="text" placeholder="username">
+        <input id="pw" name="pw" type="password" placeholder="password">
         <button action="submit">Submit</button>
     </form>
     <br>
-    <h2>Validate a login</h2>
+    <h1>Validate a login</h1>
     <form id="login">
-        <input id="un" name="userName2" type="text">
-        <input id="pw2" name="pw2" type="password">
+        <input id="un" name="userName2" type="text" placeholder="username">
+        <input id="pw2" name="pw2" type="password" placeholder="password">
         <button action="submit">Submit</button>
     </form>
     <br>
-    <h2>Create a playlist</h2>
+    <h1>Create a playlist</h1>
     <form id="createPlaylist">
-        <input id="title" name="title" type="text">
-        <input id="desc" name="desc" type="text">
-        <input id="userId" name="userId" type="text">
+        <input id="title" name="title" type="text" placeholder="title">
+        <input id="desc" name="desc" type="text" placeholder="desc">
+        <input id="userId" name="userId" type="text" placeholder="userID">
         <button action="submit">Submit</button>
     </form>
 
-    <!-- <h2>Update a playlist</h2> -->
-    <h2>Add a song to a playlist</h2>
+    <!-- <h1>Update a playlist</h1> -->
+    <h1>Add a song to a playlist</h1>
     <form id="addSong">
-        <input id="songTitle" name="title" type="text">
-        <input id="artist" name="desc" type="text">
-        <input id="album" name="userId" type="text">
-        <input id="genre" name="userId" type="text">
-        <input id="playlistId" name="userId" type="number">
+        <input id="songTitle" name="title" type="text" placeholder="title">
+        <input id="artist" name="desc" type="text" placeholder="artist">
+        <input id="album" name="userId" type="text" placeholder="album">
+        <input id="genre" name="userId" type="text" placeholder="genre">
+        <input id="playlistId" name="userId" type="number" placeholder="playlistID">
         <button action="submit">Submit</button>
     </form>
 
+    <h1>Test Spotify</h1>
+    <form id="spotify">
+        <select id="type">
+            <option name="track">Track</option>
+            <option name="artist">Artist</option>
+            <option name="album">Album</option>
+        </select>
+        <input id="search" name="title" type="text" placeholder="search">
+        <button action="submit">Submit</button>
+    </form>
 
-    <h2>Remove a song from a playlist</h2>
+    <div id="spotResults">
+        
+    </div>
+
+    <!-- <h1>Remove a song from a playlist</h1> -->
 </body>
 =======
 
