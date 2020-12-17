@@ -12,8 +12,6 @@ module.exports = function(app) {
 
   app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
-    let clientID= "47574acd314042f0b65d7125bdbf9e12";
-    res.redirect(`https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=code&redirect_uri=http://localhost:8080/query&scope=user-read-private%20user-read-email&state=34fFs29kd09`);
   });
 
   app.get("/login", function(req, res) {
