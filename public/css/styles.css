@@ -124,9 +124,12 @@ h1 {
     color: #fff;
     font-family: 'Audiowide', cursive;
 }
+h2 {
+    color: #fff;
+}
 
 .form {
-    background-image: url("../images/Loginbackground.jpg");
+    background-image: url("../images/loginbackgroundphoto.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -160,7 +163,7 @@ h1 {
 }
 #forgot:hover {
     color: #78d13f;
-   }
+}
 
 #featured {
     background-color: black;
@@ -178,3 +181,4 @@ footer {
 .footer-nav {
     list-style-type: none;
 }
+
