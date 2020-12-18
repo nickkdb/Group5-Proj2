@@ -11,6 +11,51 @@
 <body>
     <script language="javascript" type="text/javascript" 
     src="js/header.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="./js/broker.js"></script>
+
+    <h1>Create a Playlist</h1>
+    <form id="playlistForm" class="uk-form-horizontal uk-margin-large">
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-horizontal-text"
+            >Name</label
+          >
+          <div class="uk-form-controls">
+            <input
+              class="uk-input"
+              id="title"
+              type="text"
+              placeholder="Name"
+              name="un"
+            />
+          </div>
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text"
+              >Description</label
+            >
+            <div class="uk-form-controls">
+              <input
+                class="uk-input"
+                id="desc"
+                type="text"
+                placeholder="description"
+                name="pw"
+              />
+            </div>
+            <div class="uk-form-controls">
+                <select class="uk-select" id="category" placeholder="category">
+                    <option id="Party">Party</option>
+                    <option id="Workout">Workout</option>
+                    <option value="Chill">Chill</option>
+                </select>
+              </div>
+          </div>
+          <div>
+            <a action="submit" id="createPlaylist" class="uk-button uk-button-default" href="#">Create Playlist</a>
+          </div>
+        </div>
+      </form>
  
 
 
