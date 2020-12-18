@@ -27,7 +27,7 @@ module.exports = function(app) {
     let ans= url.match(regex);
     ans= ans[0].split("=")[1]; 
     getToken(ans);
-    res.redirect("/test")
+    res.redirect("/sign-in")
 });
 
 function getToken(x) {
@@ -79,8 +79,8 @@ app.get("/api/tokens", function(req, res){
     res.sendFile(path.join(__dirname, "../public/forgot-password.html"));
   });
 
-  app.get("/test", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/test.html"));
+  app.get("/sign-in", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
   // app.get("/login", function(req, res) {

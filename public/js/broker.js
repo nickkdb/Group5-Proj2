@@ -244,7 +244,7 @@ $(document).ready (function(){
                             <td>${spot[i].name}</td>
                             <td>${spot[i].album.name}</td>
                             <td>${spot[i].artists[0].name}</td>
-                            <td><button class="addBtn">Add Song</button></td>
+                            <td><button data-title="${spot[i].name}" id="${spot[i].id}"class="addQ">Add Song</button></td>
                         </tr>`;
 
                         $('#table').append(row);
@@ -281,6 +281,29 @@ $(document).ready (function(){
 
     })
 
+    $(document).on("click",".addQ", function(event) {
+        var qdiv = $('#q');
+        var qId = $(this).attr('id');
+        var qTitle = $(this).attr('data-title');
+        console.log(qTitle);
+        var newQ = `<p id="${qId}" class="playTrack">${qTitle}</p>`;
+
+        qdiv.append(newQ);
+
+    })
+
+    $(document).on("click",".playTrack", function(event) {
+        var qdiv = $('#q');
+
+        var trackId = $(this).attr('id');
+         
+        var embed = 
+        `<iframe src="https://open.spotify.com/embed/track/${trackId}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
+    
+
+        qdiv.append(embed);
+
+    })
 })
   
   

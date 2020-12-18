@@ -70,6 +70,7 @@ and remain visible after the animation was complete */
     position: absolute;
     left: 45%;
     bottom: 25%;
+    z-index: 15;
 }
 /* I still need to make this mobile friendly. It works but looks wonky. */
 .login-links {
