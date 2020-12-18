@@ -19,7 +19,7 @@ $(document).ready (function(){
           }).then(
             function() {
               alert("Account creation Successful. Redirecting to account page");
-              // need to decide where to redirect users
+              // send user to account page
               window.location.replace("/account");
             }
           );

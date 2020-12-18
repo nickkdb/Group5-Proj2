@@ -9,29 +9,33 @@ $(document).ready (function(){
         console.log(allSongs)
     });
 
+    // grab the playlist id from the url
     var url = window.location.href;
     var id = url[url.length-1];
     console.log(id);
     
-    // grab all songs to use as needed for validation
+    // grab all of the playlist songs to display on page
     var plSongs;
     $.ajax(`/api/playlists/${id}`, {
         type: "GET"
     }).then (function(results) {
         console.log(results)
+
+        // set the headers equal to playlist data
         $('#plTitle').text(results.title);
         $('#plCat').text(results.category);
         $('#plDesc').text(results.description);
 
         var songs = results.playlistSong;
 
+        // create a row for each song in the playlist
         for (let i=0; i < songs.length; i++){
             let songRow = `<li>${songs[i].title} | ${songs[i].artist} | ${songs[i].album} </li>`
             $('#plSongs').append(songRow);
         }
     });
 
-    // need to create some validation over if a song already exists or not
+    // add a song and add to playlist; validate if a song already exists or not
     $(document).on("click",".addSong", function(event) {
 
         event.preventDefault()
@@ -39,6 +43,7 @@ $(document).ready (function(){
        
         console.log($(this).data('title'));
         
+            // the new song to add
             var newSong = {
             title: $(this).data('title').trim(),
             artist: $(this).data('artist').trim(),
@@ -47,6 +52,7 @@ $(document).ready (function(){
             playlistId: id,
             };
 
+            // song - the id to query its existence in DB
             var querySong = {    
                 title: $(this).data('title').trim(),
                 artist: $(this).data('artist').trim(),
@@ -57,6 +63,7 @@ $(document).ready (function(){
             var match;
             var oldId;
 
+            // see if the current song matches in the DB
             for (let i=0; i < allSongs.length; i++) {
                 if (querySong.title === allSongs[i].title && querySong.artist === allSongs[i].artist && querySong.album === allSongs[i].album ) {
                     match = true
@@ -67,12 +74,14 @@ $(document).ready (function(){
                 }
             }
 
+            // if it matches, don't create new song; just create new association in playlist_songs
             if (match === true) {
                 $.ajax("/api/ps", {
                     type: "POST",
                     data: {playlistId: newSong.playlistId, songId: oldId}
                 })
             }
+            // otherwise, create new song and new association
             else {
                 $.ajax("/api/songs", {
                     type: "POST",
