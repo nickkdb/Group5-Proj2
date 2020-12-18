@@ -1,3 +1,7 @@
+html{
+    height:100%; 
+    background-color: #333;
+}
 body {
     background-color: #333;
     color: #fff;
@@ -11,6 +15,13 @@ body {
 }
 .uk-margin {
     margin: 0px!important;
+}
+#banner {
+    background-image: url("../images/Loginbackground.jpg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
 }
 #hero {
     background-image: url("../images/record-shop.jpg");
@@ -36,6 +47,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     z-index: 5;
+    max-height: 456px;
     position: absolute;
     animation: slideInLeft;
     -moz-animation: slideInLeft;
@@ -52,6 +64,7 @@ and remain visible after the animation was complete */
     margin-left: auto;
     margin-right: auto;
     z-index: 10;
+    max-height: 456px;
     position: absolute;
     animation: slideInRight;
     -moz-animation: slideInRight;
@@ -81,9 +94,9 @@ and remain visible after the animation was complete */
     animation-duration: 2s;
     -moz-animation-duration: 2s;
     -webkit-animation-duration: 2s;
-    animation-delay: 1.75s;
-    -moz-animation-delay: 1.75s;
-    -webkit-animation-delay: 1.75s;
+    animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    -webkit-animation-delay: 1s;
     animation-fill-mode: forwards;
 }
 /* ================================================= */
@@ -93,6 +106,12 @@ and remain visible after the animation was complete */
     color: #333;
     border: none;
     margin: 20px;
+}
+#play {
+    background-color: #78d13f;
+    color: #333;
+    border: none;
+    margin-top: 20px;
 }
 
 #login {
@@ -106,10 +125,61 @@ h1 {
     color: #fff;
     font-family: 'Audiowide', cursive;
 }
-.pure-form {
-    background-color: #fff;
-    color: #333;
-    border: 100px;
-    padding: 250px;
-    margin: 20px;
+h2 {
+    color: #fff;
 }
+
+.form {
+    background-image: url("../images/loginbackgroundphoto.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1200px;
+}
+.uk-form-label {
+    color: #fff;
+}
+.uk-margin {
+    background-color: #0000005e;
+}
+.uk-form-horizontal .uk-form-label {
+    width: 200px;
+    margin-top: 15px;
+    margin: 32px;
+}
+.uk-form-horizontal .uk-form-controls {
+    margin: 32px;
+}
+.uk-form-horizontal {
+    color: #fff;
+    margin: auto;
+    max-width: 500px;
+}
+
+#forgot {
+ font-style: italic;
+ color: white;
+ text-decoration: none;
+ margin-left: 43px;
+}
+#forgot:hover {
+    color: #78d13f;
+}
+
+#featured {
+    background-color: black;
+    padding: 20px;
+    border-radius: 15px;
+    float: left;
+    width: 50%;
+}
+
+footer {
+    background-color: #000;
+    width: 100%;
+    padding: 20px;
+}
+.footer-nav {
+    list-style-type: none;
+}
+
