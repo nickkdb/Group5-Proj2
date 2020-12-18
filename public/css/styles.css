@@ -135,6 +135,13 @@ h2 {
     background-size: cover;
     height: 1200px;
 }
+.signup-form {
+    background-image: url("../images/Joinbackground.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1200px;
+}
 .uk-form-label {
     color: #fff;
 }
@@ -171,6 +178,12 @@ h2 {
     border-radius: 15px;
     float: left;
     width: 50%;
+}
+
+.signup-text {
+    color: #78d13f;
+    text-shadow: 4px 4px #262626;
+   padding-left: 20px;
 }
 
 footer {
