@@ -2,6 +2,8 @@ var db = require("../models");
 var passport = require("../config/passport");
 
 module.exports = function(app) {
+
+  var session;
   // Get all users -- user for when checking a login
   // app.get("/api/users", function(req, res) {
   //   db.user.findAll({
@@ -22,6 +24,7 @@ module.exports = function(app) {
     });
   });
 
+
     // grab a specfic user from the db by name & pw to validate login
     app.get("/api/login/:username/:password", function(req, res) {
       db.user.findOne({
@@ -32,6 +35,7 @@ module.exports = function(app) {
         }
       }).then(function(dbUser) {
         res.json(dbUser);
+        session = dbUser.id;
       });
     });
 
@@ -47,7 +51,8 @@ module.exports = function(app) {
 
   // grab all the playlists a specific user has
   app.get("/api/users/:id/playlists", function(req, res) {
-    db.user.findOne({
+    db.user.findAll({
+      attributes: ['username', 'id'],
       where: {
         id: req.params.id
       },
@@ -63,8 +68,13 @@ module.exports = function(app) {
   app.post("/api/users", function(req, res) {
     db.user.create(req.body).then(function(dbUser) {
       res.json(dbUser);
+      session = dbUser.id;
     });
   });
+
+  app.get("/api/session", function(req,res){
+    res.json(session);
+  })
 
   // update an existing user
   app.put("/api/users", function(req, res) {

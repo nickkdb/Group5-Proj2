@@ -2,7 +2,7 @@ var path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 var request = require('request');
 var fetch= require('node-fetch');
-const { fetchAsyncQuestionPropertyQuestionProperty } = require("inquirer/lib/utils/utils");
+
 
 // Routes
 // =============================================================
@@ -83,6 +83,18 @@ app.get("/api/tokens", function(req, res){
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
+    app.get("/account", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/account.html"));
+  });
+
+  app.get("/create", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/create-playlist.html"));
+  });
+
+  app.get("/playlist/:id", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/playlist.html"));
+  });
+
   // app.get("/login", function(req, res) {
   //   if (req.user) {
   //     res.redirect("/account");
@@ -90,13 +102,6 @@ app.get("/api/tokens", function(req, res){
   //   res.sendFile(path.join(__dirname, "../public/login.html"));
   // });
 
-  // app.get("/account", isAuthenticated, function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/account.html"));
-  // });
-
-  //  app.get("/create", isAuthenticated, function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/create-playlist.html"));
-  // });
 
   // app.get("/test", isAuthenticated, function(req, res) {
   //   res.sendFile(path.join(__dirname, "../public/test.html"));
@@ -108,10 +113,6 @@ app.get("/api/tokens", function(req, res){
 
   // app.get("/create", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../public/create-playlist.html"));
-  // });
-
-  // app.get("/playlist", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/playlist.html"));
   // });
 
 };

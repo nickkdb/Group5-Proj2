@@ -20,9 +20,11 @@
       type="text/javascript"
       src="js/header.js"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="./js/login.js"></script>
     <section class="form">
       <h1>Sign In Here</h1>
-      <form class="uk-form-horizontal uk-margin-large">
+      <form id="loginForm" class="uk-form-horizontal uk-margin-large">
         <div class="uk-margin">
           <label class="uk-form-label" for="form-horizontal-text"
             >Username</label
@@ -30,9 +32,10 @@
           <div class="uk-form-controls">
             <input
               class="uk-input"
-              id="form-horizontal-text"
+              id="un"
               type="text"
               placeholder="Username"
+              name="un"
             />
           </div>
           <div class="uk-margin">
@@ -42,16 +45,17 @@
             <div class="uk-form-controls">
               <input
                 class="uk-input"
-                id="form-horizontal-text"
-                type="text"
+                id="pw"
+                type="password"
                 placeholder="Password"
+                name="pw"
               />
             </div>
           </div>
           <div>
-            <a id="login" class="uk-button uk-button-default" href="#">Login</a>
-            <a id="join" class="uk-button uk-button-default" href="#">Join</a>
-            <a id="forgot" href="#">Forgot Password?</a>
+            <a action="submit" id="login" class="uk-button uk-button-default" href="#">Login</a>
+            <a id="join" class="uk-button uk-button-default" href="/join">Join</a>
+            <a id="forgot" href="/forgot">Forgot Password?</a>
           </div>
         </div>
       </form>

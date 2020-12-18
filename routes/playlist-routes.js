@@ -28,7 +28,7 @@ module.exports = function(app) {
       res.json(dbPlaylist);
     });
   });
-
+  
   // create a new playlist
   app.post("/api/playlists", function(req, res) {
     db.playlist.create(req.body).then(function(dbPlaylist) {
