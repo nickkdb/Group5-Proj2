@@ -1,5 +1,14 @@
 $(document).ready (function(){
 
+    // grab all songs to use as needed for validation
+    var allSongs;
+    $.ajax("/api/songs", {
+        type: "GET"
+    }).then (function(results) {
+        allSongs = results;
+        console.log(allSongs)
+    });
+
     var url = window.location.href;
     var id = url[url.length-1];
     console.log(id);
@@ -23,33 +32,25 @@ $(document).ready (function(){
     });
 
     // need to create some validation over if a song already exists or not
-    $(document).on("submit",".addSong", function(event) {
+    $(document).on("click",".addSong", function(event) {
 
         event.preventDefault()
         //   console.log('TEST CREATE USER');
-        console.log($(this).)
-
-        // grab all songs to use as needed for validation
-        var allSongs;
-        $.ajax("/api/songs", {
-            type: "GET"
-        }).then (function(results) {
-            allSongs = results;
-            console.log(allSongs)
-        });
+       
+        console.log($(this).data('title'));
         
             var newSong = {
-            title: $("#songTitle").val().trim(),
-            artist: $("#artist").val().trim(),
-            album: $('#album').val().trim(),
-            genre: $('#genre').val().trim(),
-            playlistId: $('#playlistId').val().trim(),
+            title: $(this).data('title').trim(),
+            artist: $(this).data('artist').trim(),
+            album: $(this).data('album').trim(),
+            // genre: $('#genre').val().trim(),
+            playlistId: id,
             };
 
             var querySong = {    
-                title: $("#songTitle").val().trim(),
-                artist: $("#artist").val().trim(),
-                album: $('#album').val().trim()
+                title: $(this).data('title').trim(),
+                artist: $(this).data('artist').trim(),
+                album: $(this).data('album').trim()
             }
             console.log(querySong);
 
@@ -80,10 +81,10 @@ $(document).ready (function(){
                     function(results) {
                         console.log("created new song");
                         // need to decide where to redirect users
-                        location.reload();
-                    }
+                     }
                     );
             }
+            location.reload();
         
         });
 
@@ -147,12 +148,13 @@ $(document).ready (function(){
 
                     // table rows
                     for (let i=0; i < spot.length; i++) {
-                        let row = `<form class="addSong"><tr>
+                        let row = `<tr>
                             <td name="title">${spot[i].name}</td>
-                            <td name="album">${spot[i].album.name}</td>
+                            <td name="album">${spot[i].album.name}<img src="${spot[i].album.images[2].url}"></td>
                             <td name="artist">${spot[i].artists[0].name}</td>
-                            <td><button data-title="${spot[i].name}" id="${spot[i].id}" action="submit">Add Song</button></td>
-                        </tr></form>`;
+                            <td><button data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
+                            class="addSong" action="submit">Add Song</button></td>
+                        </tr>`;
 
                         $('#table').append(row);
 
