@@ -2,7 +2,7 @@ var path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 var request = require('request');
 var fetch= require('node-fetch');
-const { fetchAsyncQuestionPropertyQuestionProperty } = require("inquirer/lib/utils/utils");
+// const { fetchAsyncQuestionPropertyQuestionProperty } = require("inquirer/lib/utils/utils");
 
 // Routes
 // =============================================================
