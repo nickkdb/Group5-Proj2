@@ -11,7 +11,9 @@ $(document).ready(function () {
 
     // grab the playlist id from the url
     var url = window.location.href;
-    var id = url[url.length - 1];
+    let regex= /playlist\/[\d]+/;
+    var id = url.match(regex);
+    id= id[0].split("/")[1];
     console.log(id);
 
     // grab all of the playlist songs to display on page
@@ -105,7 +107,7 @@ $(document).ready(function () {
         // Get the values from the search form
         var type = $('#type').val().trim().toLowerCase();
         var search = $('#search').val().trim();
-        search = search.replace(/ /g, '%20');
+        search = search.replace(/\s/g, '%20');
         console.log(search, type);
 
         // make an ajax call to get the spotify tokens
