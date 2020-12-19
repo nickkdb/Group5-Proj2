@@ -1,7 +1,13 @@
 //must include <script src="https://sdk.scdn.co/spotify-player.js"></script> in HTML file for this to work
-
-window.onSpotifyWebPlaybackSDKReady = () => {
-    const token = 'BQBHPsZKdrK9mIsfk8KPbOx4JDRSmLAVHKNjk3jfe1bnS8B24e4y-wO34QjZZoNtwJ42d-wqdSBRvK8FoG1kpDs1UWd24bL1MV3eGdQozlc19kJCVhX_HP4UEQ2fJCbMSvjMd6scA_BzxtcKsxaUHAbnPSHK6fkrlw';
+let token;
+let device;
+$.ajax("/api/tokens", {
+    type: "GET"
+}).then((key) => {
+    token= key.accessToken;
+})
+window.onSpotifyWebPlaybackSDKReady = () => { 
+    //const token = 'BQBHPsZKdrK9mIsfk8KPbOx4JDRSmLAVHKNjk3jfe1bnS8B24e4y-wO34QjZZoNtwJ42d-wqdSBRvK8FoG1kpDs1UWd24bL1MV3eGdQozlc19kJCVhX_HP4UEQ2fJCbMSvjMd6scA_BzxtcKsxaUHAbnPSHK6fkrlw';
   const player = new Spotify.Player({
     name: 'Browser',
     getOAuthToken: cb => { cb(token); }
@@ -19,6 +25,19 @@ window.onSpotifyWebPlaybackSDKReady = () => {
   // Ready
   player.addListener('ready', ({ device_id }) => {
     console.log('Ready with Device ID', device_id);
+    device= device_id;
+    $.ajax(`https://api.spotify.com/v1/me/player`, {
+                type: "PUT",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                dataType: "json",
+                data: JSON.stringify({
+                    "device_ids": [`${device_id}`]
+                })
+            });
   });
 
   // Not Ready
@@ -131,10 +150,35 @@ $(document).ready(function () {
     })
 
 })
-
 // ADD NICK
-  $(document).on("click", ".addQ", function (event) {
-
+  $(document).on("click", ".addQ", function () {
+    let id= $(this).attr('id');
+    let uri= "spotify%3Atrack%3A" + id;
+    $.ajax(`https://api.spotify.com/v1/me/player/queue?uri=${uri}&device_id=${device}`, {
+                type: "POST",
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            }).then(function() {
+                if (err) throw err;
+                console.log("success");
+            });
   });
+})
 
+$(document).on("click", "#play", () => {
+    $.ajax(`https://api.spotify.com/v1/me/player/play?device_id=${device}`, {
+                    type: "PUT",
+                    headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                dataType: "json",
+                data: JSON.stringify({
+                    "uris": [`spotify:track:2D1hlMwWWXpkc3CZJ5U351`]
+                })
+                });
 })
