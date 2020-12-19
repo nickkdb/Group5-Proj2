@@ -30,7 +30,7 @@ $(document).ready(function () {
 
         // create a row for each song in the playlist
         for (let i = 0; i < songs.length; i++) {
-            let songRow = `<li>${songs[i].title} | ${songs[i].artist} | ${songs[i].album} </li>`
+            let songRow = `<li>${songs[i].title} | ${songs[i].artist} | ${songs[i].album} <button data-songid='${songs[i].id}' class='delSong'>Delete</button> </li>`
             $('#plSongs').append(songRow);
         }
     });
@@ -198,6 +198,26 @@ $(document).ready(function () {
         })
 
     })
+
+    //Function for deleting specific songs from a playlist
+    // $(document).on("click", ".delSong", function () {
+
+    
+    //     let remove = $(this).data("songid");
+        
+    //     console.log(id);
+
+        // $.ajax("/" + id, {
+        //     type: "DELETE"
+        // }).then(
+        //     function () {
+        //         console.log("deleted id ", id);
+
+        //         location.reload();
+        //     }
+        // );
+    //});
+
 
     // Function for handling what happens when the delete button is pressed
     $("#deletePlaylist").on("click", function () {
