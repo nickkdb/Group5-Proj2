@@ -50,6 +50,7 @@ module.exports = function(app) {
       })
     });
 
+    //delete a song
     app.delete("/api/ps", (req, res) => {
       db.playlist_song.destroy({
         where: {

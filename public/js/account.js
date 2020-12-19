@@ -22,7 +22,7 @@ $(document).ready (function(){
 
                     // list all the playlists a user has
                     for(let i=0; i < pl.playlists.length; i++){
-                        let row = `<p id="${pl.playlists[i].id}">${pl.playlists[i].title}</p><a href="/playlist/${pl.playlists[i].id}">View/Edit</a>`
+                        let row = `<p id="${pl.playlists[i].id}">${pl.playlists[i].title}</p><a href="/playlist/${pl.playlists[i].id}">View/Edit</a><button data-playlistid='${pl.playlists[i].id}' class='delPlay'>Delete</button>`
                         $('#userPlaylists').append(row);
                     }
     
@@ -62,4 +62,22 @@ $(document).ready (function(){
   
 })
   
-  
+// Function for deleting a playlist
+$(".delPlay").on("click", function () {
+
+    //targets playlist that was clicked
+    let deleted = $(this).data("playlistid");
+
+    console.log(deleted);
+
+    //ajax call to delete a playlist
+    $.ajax("/api/playlists" + deleted, {
+        type: "DELETE"
+    }).then(
+        function () {
+            console.log("deleted id ", deleted);
+
+            location.reload();
+        }
+    );
+});

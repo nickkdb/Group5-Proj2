@@ -37,6 +37,25 @@ $(document).ready(function () {
         }
     });
 
+    //Function for deleting specific songs from a playlist
+    // $(document).on("click", ".delSong", function () {
+
+    
+    //     let remove = $(this).data("songid");
+        
+    //     console.log(remove);
+
+    //     $.ajax("/" + remove, {
+    //         type: "DELETE"
+    //     }).then(
+    //         function () {
+    //             console.log("deleted id ", remove);
+
+    //             location.reload();
+    //         }
+    //     );
+    // });
+
     // add a song and add to playlist; validate if a song already exists or not
     $(document).on("click", ".addSong", function (event) {
 
@@ -75,7 +94,6 @@ $(document).ready(function () {
                 match = false;
             }
         }
-
         // if it matches, don't create new song; just create new association in playlist_songs
         if (match === true) {
             $.ajax("/api/ps", {
@@ -200,46 +218,6 @@ $(document).ready(function () {
         })
 
     })
-
-    //Function for deleting specific songs from a playlist
-    // $(document).on("click", ".delSong", function () {
-
-    
-    //     let remove = $(this).data("songid");
-        
-    //     console.log(id);
-
-        // $.ajax("/" + id, {
-        //     type: "DELETE"
-        // }).then(
-        //     function () {
-        //         console.log("deleted id ", id);
-
-        //         location.reload();
-        //     }
-        // );
-    //});
-
-
-    // Function for handling what happens when the delete button is pressed
-    $("#deletePlaylist").on("click", function () {
-
-        //targets playlist that was clicked
-        let deleted = $(this).data(id);
-
-        console.log(deleted);
-
-        //ajax call to delete a playlist
-        $.ajax("/api/playlists" + deleted, {
-            type: "DELETE"
-        }).then(
-            function () {
-                console.log("deleted id ", deleted);
-
-                location.reload();
-            }
-        );
-    });
 
 
 
