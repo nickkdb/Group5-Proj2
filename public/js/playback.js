@@ -29,3 +29,112 @@ window.onSpotifyWebPlaybackSDKReady = () => {
   // Connect to the player!
   player.connect();
 } 
+
+$(document).ready(function () {
+   // Grab spotify tokens and make a call 
+  $("#searchSpotify").on("click", function (event) {
+    event.preventDefault();
+
+    // Get the values from the search form
+    var type = $('#type').val().trim().toLowerCase();
+    var search = $('#search').val().trim();
+    search = search.replace(/\s/g, '%20');
+    console.log(search, type);
+
+    // make an ajax call to get the spotify tokens
+    // then make spotify call for data
+    // then append html with data
+    $.ajax("/api/tokens", {
+        type: "GET"
+    }).then(function (key) {
+        $.ajax(`https://api.spotify.com/v1/search?q=${search}&limit=10&type=${type}`, {
+            type: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `${key.tokenType} ${key.accessToken}`
+            }
+        }).then(function (results) {
+            console.log(results)
+            var spot;
+            var spotDiv = $('#spotResults');
+
+            if (type === 'artist') {
+                spot = results.artists.items;
+                spotDiv.empty();
+
+                // header
+                var resultTable = `<h4>Results</h4><table id="table"><tr><th>Artist</th><th>Followers</th><th>Actions</th><th>Actions</th></tr></table>`;
+                spotDiv.append(resultTable);
+
+                // append rows
+                for (let i = 0; i < spot.length; i++) {
+                    let row = `<tr>
+                        <td>${spot[i].name}</td>
+                        <td>${spot[i].followers.total}</td>
+                        <td><button class="viewAlb">View Albums</button></td>
+                        <td><button class="viewSongs">View Songs</button></td>
+                    </tr>`;
+
+                    $('#table').append(row);
+
+                }
+            }
+            else if (type === 'track') {
+                spot = results.tracks.items;
+                spotDiv.empty();
+
+                // table header
+                var resultTable = `<h4>Results</h4><table id="table"><tr><th>Track</th><th>Artist</th><th>Album</th><th>Actions</th></tr></table>`;
+                spotDiv.append(resultTable);
+
+                // table rows
+                for (let i = 0; i < spot.length; i++) {
+                    let row = `<tr>
+                        <td name="title">${spot[i].name}</td>
+                        <td name="album">${spot[i].album.name}<img src="${spot[i].album.images[2].url}"></td>
+                        <td name="artist">${spot[i].artists[0].name}</td>
+                        <td><button uri= "${spot[i].uri}" data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
+                        class="addQ" action="submit">Add Song</button></td>
+                    </tr>`;
+
+                    $('#table').append(row);
+
+                }
+            }
+            else {
+                spot = results.albums.items;
+                spotDiv.empty();
+
+                // table header
+                var resultTable = `<h4>Results</h4><table id="table"><tr><th>Track</th><th>Artist</th><th>Album</th><th>Actions</th></tr></table>`;
+                spotDiv.append(resultTable);
+
+                // table rows
+                for (let i = 0; i < spot.length; i++) {
+                    let row = `<tr>
+                        <td>${spot[i].name}</td>
+                        <td>${spot[i].artists[0].name}</td>
+                        <td><img src=${spot[i].images[2].url}></td>
+                        <td><button class="addBtn">View Songs</button></td>
+                    </tr>`;
+
+                    $('#table').append(row);
+
+                }
+            }
+
+
+
+        });
+
+    })
+
+})
+
+// ADD NICK
+  $(document).on("click", ".addQ", function (event) {
+
+  });
+
+})
