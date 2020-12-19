@@ -16,7 +16,7 @@ module.exports = function(app) {
   app.get("/login", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
     let clientID= "47574acd314042f0b65d7125bdbf9e12";
-    res.redirect(`https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=code&redirect_uri=http://localhost:8080/query&scope=streaming%20user-read-private%20user-read-email&state=34fFs29kd09`);
+    res.redirect(`https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=code&redirect_uri=http://localhost:8080/query&scope=streaming%20user-modify-playback-state%20user-read-private%20user-read-email&state=34fFs29kd09`);
   });
 
   app.get("/query", (req, res) => {
@@ -73,7 +73,7 @@ app.get("/api/tokens", function(req, res){
 app.get("/join", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/index.html"));
   let clientID= "47574acd314042f0b65d7125bdbf9e12";
-  res.redirect(`https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=code&redirect_uri=http://localhost:8080/query&scope=streaming%20user-read-private%20user-read-email&state=34fFs29kd09`);
+  res.redirect(`https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=code&redirect_uri=http://localhost:8080/query&scope=user-modify-playback-state%20streaming%20user-read-private%20user-read-email&state=34fFs29kd09`);
 });
 
 app.get("/sign-up", function(req, res) {
