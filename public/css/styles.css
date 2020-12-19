@@ -83,6 +83,7 @@ and remain visible after the animation was complete */
     position: absolute;
     left: 45%;
     bottom: 25%;
+    z-index: 15;
 }
 /* I still need to make this mobile friendly. It works but looks wonky. */
 .login-links {
@@ -105,6 +106,7 @@ and remain visible after the animation was complete */
     color: #333;
     border: none;
     margin: 20px;
+    z-index: 16;
 }
 #play {
     background-color: #78d13f;
@@ -130,6 +132,13 @@ h2 {
 
 .form {
     background-image: url("../images/loginbackgroundphoto.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 1200px;
+}
+.signup-form {
+    background-image: url("../images/Joinbackground.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -171,6 +180,12 @@ h2 {
     border-radius: 15px;
     float: left;
     width: 50%;
+}
+
+.signup-text {
+    color: #78d13f;
+    text-shadow: 4px 4px #262626;
+   padding-left: 20px;
 }
 
 footer {

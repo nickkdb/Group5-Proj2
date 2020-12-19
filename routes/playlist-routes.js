@@ -28,7 +28,7 @@ module.exports = function(app) {
       res.json(dbPlaylist);
     });
   });
-
+  
   // create a new playlist
   app.post("/api/playlists", function(req, res) {
     db.playlist.create(req.body).then(function(dbPlaylist) {
@@ -48,7 +48,17 @@ module.exports = function(app) {
       db.playlist_song.create(req.body).then(function(db){
         res.json(db);
       })
-    })
+    });
+
+    app.delete("/api/ps", (req, res) => {
+      db.playlist_song.destroy({
+        where: {
+          playlistId: req.body.playlistId,
+          songId: req.body.songId
+        }}).then((db) => {
+        res.json(db);
+      });
+    });
 
     app.get("/api/songs", function(req, res) {
       db.song.findAll({attributes: ['id', 'title', 'artist', 'album']}).then(function(dbSong) {
