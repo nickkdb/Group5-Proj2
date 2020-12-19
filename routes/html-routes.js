@@ -3,7 +3,6 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 var request = require('request');
 var fetch= require('node-fetch');
 
-
 // Routes
 // =============================================================
 module.exports = function(app) {
