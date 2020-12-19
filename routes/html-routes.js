@@ -96,6 +96,10 @@ app.get("/sign-up", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/create-playlist.html"));
   });
 
+  app.get("/jukebox", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/jukebox.html"));
+  });
+
   app.get("/playlist/:id", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/playlist.html"));
   });
