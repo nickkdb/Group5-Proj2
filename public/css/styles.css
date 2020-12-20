@@ -219,3 +219,13 @@ footer {
 #searchSpotify:hover {
     background-color: #fff;
 }
+
+#createPlaylist {
+    margin: 30px 0px 30px 0px;
+    background-color: #78d13f;
+    color: #333;
+    border: none;
+}
+#createPlaylist:hover {
+    background-color: #fff;
+}
