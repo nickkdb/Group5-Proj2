@@ -197,4 +197,25 @@ footer {
 .footer-nav {
     list-style-type: none;
 }
-
+/* ==========  This is the styling for the playlist.  ================ */
+#plSongs {
+    margin-top: 30px;
+}
+#plSongs li {
+    margin-top: 10px;
+}
+.uk-select:not([multiple]):not([size]) {
+    display: none;
+}
+.delSong {
+ float:right;
+}
+#searchSpotify {
+    margin: 30px 0px 30px 0px;
+    background-color: #78d13f;
+    color: #333;
+    border: none;
+}
+#searchSpotify:hover {
+    background-color: #fff;
+}
