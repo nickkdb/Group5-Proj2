@@ -42,7 +42,6 @@ $(document).ready(function () {
 
         event.preventDefault()
         //   console.log('TEST CREATE USER');
-
         console.log($(this).data('title'));
 
         // the new song to add
@@ -163,7 +162,7 @@ $(document).ready(function () {
                             <td name="title">${spot[i].name}</td>
                             <td name="album">${spot[i].album.name}<img src="${spot[i].album.images[2].url}"></td>
                             <td name="artist">${spot[i].artists[0].name}</td>
-                            <td><button data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
+                            <td><button uri= "${spot[i].uri}" data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
                             class="addSong" action="submit">Add Song</button></td>
                         </tr>`;
 
