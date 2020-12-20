@@ -15,7 +15,8 @@
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="../js/playlist.js"></script>
 
-    <nav class="uk-navbar-container uk-margin" uk-navbar>
+
+    <nav class="uk-navbar-container uk-margin desktop" uk-navbar>
         <div class="uk-navbar-center">
             <div class="uk-navbar-center-left">
                 <div>
@@ -35,6 +36,24 @@
             </div>
         </div>
     </nav>
+<div class="mobile-nav-container mobile">
+    <img class="nav-img" src="../images/5wire_logo.png" width="100px" height="auto"><a href="#offcanvas-slide"
+        class="uk-button uk-button-default menu" uk-toggle>Menu</a>
+
+    <div id="offcanvas-slide" uk-offcanvas>
+        <div class="uk-offcanvas-bar">
+
+            <ul class="uk-nav uk-nav-default">
+                <a class="uk-navbar-item uk-logo" href="index.html"><img src="../images/5wire_logo.png" width="100px"
+                        height="auto"></a>
+                <li><a href="/">Home</a></li>
+                <li><a href="/account">Account</a></li>
+                <li><a href="/create">Create Playlist</a></li>
+            </ul>
+
+        </div>
+    </div>
+</div>
     <header id="banner">
         <div class="uk-container">
             <h1 id="plTitle"></h1>
@@ -77,16 +96,18 @@
             </div>
         </div>
     </section>
-    <br><br>
+    <br><br><br><br><br><br>
     <footer>
         <div class="uk-align-left"><img class="footer-img" src="../images/5wire_logo.png" width="100px" height="auto"></div>
-        <p>Design & Development by Group 5<br> &#xA9; Copyright 2020 All Rights Reserved</p>
+        <div class="footer-text">Design & Development by Group 5<br> &#xA9; Copyright 2020 All Rights Reserved</div>
+        <br>
+        <div class="footer-text"><a href="/">Home</a> | <a href="/account">Account</a> | <a href="/create">Create Playlist</a></div>
     </footer>
 
-        <script language="javascript" type="text/javascript" src="../js/broker.js"></script>
-        <!--         <script src="https://sdk.scdn.co/spotify-player.js"></script> -->
-        <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.16/dist/js/uikit.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.16/dist/js/uikit-icons.min.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/broker.js"></script>
+    <!--         <script src="https://sdk.scdn.co/spotify-player.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.16/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.16/dist/js/uikit-icons.min.js"></script>
 </body>
 
 </html>
