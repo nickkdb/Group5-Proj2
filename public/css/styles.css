@@ -13,9 +13,16 @@ body {
     color: #fff;
     font-family: 'Audiowide', cursive;
 }
+.uk-navbar-nav>li:hover>a, .uk-navbar-nav>li>a.uk-open, .uk-navbar-nav>li>a:focus {
+    color: #78d13f;
+}
 .uk-margin {
     margin: 0px!important;
 }
+.footer-img {
+    margin-top: 14px;
+}
+
 #banner {
     background-image: url("../images/concert.jpg");
     background-position: center;
@@ -202,14 +209,19 @@ footer {
     margin-top: 30px;
 }
 #plSongs li {
-    margin-top: 10px;
+    line-height: 47px;
 }
 .uk-select:not([multiple]):not([size]) {
     display: none;
 }
 .delSong {
- float:right;
+    float:right;
+    background-color: #fff;
+    color: #333;
+    border: none;
 }
+/* ==========  This is the styling for the spotify buttons.  ================ */
+
 #searchSpotify {
     margin: 30px 0px 30px 0px;
     background-color: #78d13f;
@@ -228,4 +240,15 @@ footer {
 }
 #createPlaylist:hover {
     background-color: #fff;
+}
+
+/* ==========  This is the styling for the playlist list on account page.  ================ */
+.uk-card-primary {
+    margin: 10px 0px 20px 0px;
+}
+
+.view-edit {
+    background-color: #fff;
+    color: #333!important;
+    border: none;
 }

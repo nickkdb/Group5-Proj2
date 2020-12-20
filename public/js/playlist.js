@@ -32,7 +32,7 @@ $(document).ready(function () {
 
         // create a row for each song in the playlist
         for (let i = 0; i < songs.length; i++) {
-            let songRow = `<li>${songs[i].title} | ${songs[i].artist} | ${songs[i].album} <button data-songid='${songs[i].id}' class='delSong'>Delete</button> </li>`
+            let songRow = `<li>${songs[i].title} | ${songs[i].artist} | ${songs[i].album} <button data-songid='${songs[i].id}' class='delSong uk-button'>Delete</button> </li>`
             $('#plSongs').append(songRow);
         }
     });
