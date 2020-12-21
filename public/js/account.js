@@ -16,78 +16,68 @@ $(document).ready(function () {
             }).then(function (results) {
                 pl = results[0];
                 console.log(pl);
-
-<<<<<<< HEAD
-                    // list all the playlists a user has
-                    for(let i=0; i < pl.playlists.length; i++){
-                        let row = `<p id="${pl.playlists[i].id}">${pl.playlists[i].title}</p><a href="/playlist/${pl.playlists[i].id}">View/Edit</a><button data-playlistid='${pl.playlists[i].id}' class='delPlay'>Delete</button>`
-                        $('#userPlaylists').append(row);
-                    }
-    
-                });
-            }
-            );
-=======
-                // fill the header
-                $('#pi').text(`${pl.username}'s 5Wire`);
-                console.log(pl.username)
                 // list all the playlists a user has
                 for (let i = 0; i < pl.playlists.length; i++) {
-                    let row = `<div class="uk-card uk-card-primary uk-card-hover uk-card-body uk-light">
-                    <h3 id="${pl.playlists[i].id}">${pl.playlists[i].title}</h3>
-                    <a class="uk-button view-edit" href="/playlist/${pl.playlists[i].id}">View/Edit</a></div>`
+                    let row = `<p id="${pl.playlists[i].id}">${pl.playlists[i].title}</p><a href="/playlist/${pl.playlists[i].id}">View/Edit</a><button data-playlistid='${pl.playlists[i].id}' class='delPlay'>Delete</button>`
                     $('#userPlaylists').append(row);
-                    console.log(pl.playlists)
                 }
 
             });
         }
     );
->>>>>>> a1f53e8bdf151e8f8ce72369e3588f1318d9f5ab
+    // fill the header
+    $('#pi').text(`${pl.username}'s 5Wire`);
+    console.log(pl.username)
+    // list all the playlists a user has
+    for (let i = 0; i < pl.playlists.length; i++) {
+        let row = `<div class="uk-card uk-card-primary uk-card-hover uk-card-body uk-light">
+                    <h3 id="${pl.playlists[i].id}">${pl.playlists[i].title}</h3>
+                    <a class="uk-button view-edit" href="/playlist/${pl.playlists[i].id}">View/Edit</a></div>`
+        $('#userPlaylists').append(row);
+        console.log(pl.playlists)
+    }
 
+});
 
+$("#createPlaylist").on("click", function (event) {
 
-    $("#createPlaylist").on("click", function (event) {
+    event.preventDefault()
+    //   console.log('TEST CREATE USER');
 
-        event.preventDefault()
-        //   console.log('TEST CREATE USER');
+    // take the form data
+    var newPlaylist = {
+        title: $("#title").val().trim(),
+        description: $("#desc").val().trim(),
+        userId: userId,
+        category: "Test"
+    };
 
-        // take the form data
-        var newPlaylist = {
-            title: $("#title").val().trim(),
-            description: $("#desc").val().trim(),
-            userId: userId,
-            category: "Test"
-        };
+    console.log(newPlaylist);
 
-        console.log(newPlaylist);
+    // Send the POST request.
+    $.ajax("/api/playlists", {
+        type: "POST",
+        data: newPlaylist
+    }).then(
+        function (res) {
+            console.log("created new playlist");
+            // redirect to new playlist's page
+            window.location.replace(`/playlist/${res.id}`);
+        }
+    );
+});
 
-        // Send the POST request.
-        $.ajax("/api/playlists", {
-            type: "POST",
-            data: newPlaylist
-        }).then(
-            function (res) {
-                console.log("created new playlist");
-                // redirect to new playlist's page
-                window.location.replace(`/playlist/${res.id}`);
-            }
-        );
-    });
-
-})
-<<<<<<< HEAD
-  
 // Function for deleting a playlist
-$(".delPlay").on("click", function () {
-
+$(document).on("click", ".delPlay", function () {
+    console.log('clicked');
+    
     //targets playlist that was clicked
     let deleted = $(this).data("playlistid");
 
     console.log(deleted);
 
     //ajax call to delete a playlist
-    $.ajax("/api/playlists" + deleted, {
+    $.ajax("/api/playlists/" + deleted, {
         type: "DELETE"
     }).then(
         function () {
@@ -97,6 +87,3 @@ $(".delPlay").on("click", function () {
         }
     );
 });
-=======
-
->>>>>>> a1f53e8bdf151e8f8ce72369e3588f1318d9f5ab
