@@ -20,11 +20,20 @@ window.onSpotifyWebPlaybackSDKReady = () => {
   player.addListener('playback_error', ({ message }) => { console.error(message); });
 
   // Playback status updates
-  player.addListener('player_state_changed', state => { console.log(state); });
+  player.addListener('player_state_changed', state => { 
+    console.log(state); 
+    console.log(state.track_window.current_track.id);
+    let track = state.track_window.current_track.id;
+    var embed = `<iframe src="https://open.spotify.com/embed/track/${track}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
+ 
+    $('#jbx').html(embed);
+    
+});
 
   // Ready
   player.addListener('ready', ({ device_id }) => {
     console.log('Ready with Device ID', device_id);
+    
     device= device_id;
     $.ajax(`https://api.spotify.com/v1/me/player`, {
                 type: "PUT",
