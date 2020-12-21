@@ -108,7 +108,7 @@ $(document).ready(function () {
                 spotDiv.append(resultTable);
 
                 // table rows
-                for (let i = 0; i < spot.length; i++) {
+/*                 for (let i = 0; i < spot.length; i++) {
                     let row = `<tr>
                         <td name="title">${spot[i].name}</td>
                         <td name="album">${spot[i].album.name}<img src="${spot[i].album.images[2].url}"></td>
@@ -116,6 +116,17 @@ $(document).ready(function () {
                         <td><button uri= "${spot[i].uri}" data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
                         class="addQ" action="submit">Add Song</button></td>
                     </tr>`;
+
+                    $('#table').append(row);
+
+                } */
+                for (let i = 0; i < spot.length; i++) {
+                    let row = `<li>${spot[i].name}<br>
+                        ${spot[i].album.name}<br>
+                        <img src="${spot[i].album.images[2].url}"><br>
+                        ${spot[i].artists[0].name}<br>
+                        <button uri= "${spot[i].uri}" data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
+                        class="addQ" action="submit">Add Song</button>`;
 
                     $('#table').append(row);
 
