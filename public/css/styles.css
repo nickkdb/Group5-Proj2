@@ -160,11 +160,15 @@ and remain visible after the animation was complete */
     margin-top: 20px;
 }
 
-#login {
+#login, #juke {
     background-color: #fff;
     color: #333;
     border: none;
     margin: 20px;
+}
+
+#juke {
+    margin-left: 4rem;
 }
 
 h1 {
