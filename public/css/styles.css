@@ -243,4 +243,8 @@ album-img {
     color: #333!important;
     border: none;
 }
-
+.disclaimer{
+    font-size: 14px;
+    position: fixed;
+    top: 450px;
+}
