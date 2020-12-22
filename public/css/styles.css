@@ -103,13 +103,15 @@ background-color: #78d13f;
     margin-top: 20px;
 }
 
-#login {
+#login, #juke {
     background-color: #fff;
     color: #333;
     border: none;
     margin: 20px;
 }
-
+#juke {
+    margin-left: 4rem;
+}
 h1, h2, h4 {
     color: #fff;
     font-family: 'Audiowide', cursive;
