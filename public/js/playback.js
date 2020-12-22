@@ -92,7 +92,7 @@ $(document).ready(function () {
                 spotDiv.empty();
 
                 // header
-                var resultTable = `<h4>Results</h4><table id="table"><tr><th>Artist</th><th>Followers</th><th>Actions</th><th>Actions</th></tr></table>`;
+                var resultTable = `<h4>Results</h4><table id="table"></table>`;
                 spotDiv.append(resultTable);
 
                 // append rows
@@ -113,7 +113,7 @@ $(document).ready(function () {
                 spotDiv.empty();
 
                 // table header
-                var resultTable = `<h4>Results</h4><table id="table"><tr><th>Track</th><th>Artist</th><th>Album</th><th>Actions</th></tr></table>`;
+                var resultTable = `<h4>Results</h4><table id="table"></table>`;
                 spotDiv.append(resultTable);
 
                 // table rows
@@ -135,7 +135,9 @@ $(document).ready(function () {
                         <img src="${spot[i].album.images[2].url}"><br>
                         ${spot[i].artists[0].name}<br>
                         <button uri= "${spot[i].uri}" data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
-                        class="addQ" action="submit">Add Song</button>`;
+                        class="addQ" action="submit">Add to Queue</button>
+                        <button data-uri= "${spot[i].uri}" class="playSong" action="submit">Play this song</button>`;
+                        
 
                     $('#table').append(row);
 
@@ -186,7 +188,7 @@ $(document).ready(function () {
                 console.log("success");
             });
   });
-})
+});
 
 $(document).on("click", "#play", () => {
     $.ajax(`https://api.spotify.com/v1/me/player/play?device_id=${device}`, {
@@ -196,9 +198,37 @@ $(document).on("click", "#play", () => {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
                 },
+                // dataType: "json",
+                // data: JSON.stringify({
+                //     "uris": [`spotify:track:2D1hlMwWWXpkc3CZJ5U351`]
+                // })
+                });
+});
+
+$(document).on("click", "#pause", () => {
+    $.ajax(`https://api.spotify.com/v1/me/player/pause?device_id=${device}`, {
+                    type: "PUT",
+                    headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+                });
+});
+
+$(document).on("click", ".playSong", function() {
+    let uri= $(this).data('uri');
+    console.log(uri);
+    $.ajax(`https://api.spotify.com/v1/me/player/play?device_id=${device}`, {
+                    type: "PUT",
+                    headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
                 dataType: "json",
                 data: JSON.stringify({
-                    "uris": [`spotify:track:2D1hlMwWWXpkc3CZJ5U351`]
+                    "uris": [`${uri}`]
                 })
                 });
 })
