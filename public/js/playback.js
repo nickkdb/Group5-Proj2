@@ -107,8 +107,8 @@ $(document).ready(function () {
                 spotDiv.empty();
 
                 // table header
-                var resultTable = `<h4>Results</h4><table id="table"></table>`;
-                spotDiv.append(resultTable);
+/*                 var resultTable = `<h4>Results</h4><table id="table"></table>`;
+                spotDiv.append(resultTable); */
 
                 // table rows
 /*                 for (let i = 0; i < spot.length; i++) {
@@ -125,15 +125,15 @@ $(document).ready(function () {
                 } */
                 for (let i = 0; i < spot.length; i++) {
                     let row = `<li>${spot[i].name}<br>
+                        ${spot[i].artists[0].name}<br>
                         ${spot[i].album.name}<br>
                         <img src="${spot[i].album.images[2].url}"><br>
-                        ${spot[i].artists[0].name}<br>
-                        <button uri= "${spot[i].uri}" data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
+                        <button class="uk-button delSong" uri= "${spot[i].uri}" data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
                         class="addQ" action="submit">Add to Queue</button>
-                        <button data-uri= "${spot[i].uri}" class="playSong" action="submit">Play this song</button>`;
+                        <button class="uk-button add-btn" data-uri= "${spot[i].uri}" class="playSong" action="submit">Play this song</button><hr>`;
                         
 
-                    $('#table').append(row);
+                        spotDiv.append(row);
 
                 }
             }
