@@ -2,6 +2,7 @@ var path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 var request = require('request');
 var fetch= require('node-fetch');
+const env = require('dotenv');
 
 // Routes
 // =============================================================
@@ -15,7 +16,7 @@ module.exports = function(app) {
 
   app.get("/login", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
-    let clientID= "47574acd314042f0b65d7125bdbf9e12";
+    let clientID= process.env.clientId;
     res.redirect(`https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=code&redirect_uri=http://localhost:8080/query&scope=streaming%20user-modify-playback-state%20user-read-private%20user-read-email&state=34fFs29kd09`);
   });
 
