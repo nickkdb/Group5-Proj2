@@ -23,6 +23,7 @@ FiveWire allows users to:
  
 ## screenshot of application: 
 
+<img src= "./public/images/appSC.png" alt= "screenshot">
 
 ## link to deployed application:
 https://group5-proj2.herokuapp.com/
