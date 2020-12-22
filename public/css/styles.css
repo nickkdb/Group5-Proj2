@@ -159,6 +159,9 @@ h1, h2, h4 {
 #forgot:hover {
     color: #78d13f;
 }
+.fit-content{
+    width: fit-content;
+}
 
 .signup-text {
     color: #78d13f;
