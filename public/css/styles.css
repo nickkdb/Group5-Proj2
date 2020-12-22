@@ -96,7 +96,7 @@ background-color: #78d13f;
     margin: 20px;
     z-index: 16;
 }
-#play {
+#play, #pause{
     background-color: #78d13f;
     color: #333;
     border: none;
