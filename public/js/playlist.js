@@ -38,7 +38,7 @@ $(document).ready(function () {
     });
 
     // add a song and add to playlist; validate if a song already exists or not
-    $(document).on("click", ".addSong", function (event) {
+    $(document).on("click", ".add-btn", function (event) {
 
         event.preventDefault()
         //   console.log('TEST CREATE USER');
@@ -127,96 +127,26 @@ $(document).ready(function () {
                 var spot;
                 var spotDiv = $('#spotResults');
 
-                if (type === 'artist') {
-                    spot = results.artists.items;
-                    spotDiv.empty();
+                spot = results.tracks.items;
+                spotDiv.empty();
 
-                    // header
-                    var resultTable = `<h4>Results</h4><table id="table"><tr><th>Artist</th><th>Followers</th><th>Actions</th><th>Actions</th></tr></table>`;
-                    spotDiv.append(resultTable);
+                // table rows
+                for (let i = 0; i < spot.length; i++) {
+                    let row = `<li>${spot[i].name}<br>
+                    ${spot[i].artists[0].name}<br>
+                    ${spot[i].album.name}<br>
+                    <img src="${spot[i].album.images[2].url}"><br>
+                    <button class="uk-button add-btn" uri= "${spot[i].uri}" data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
+                    class="addQ" action="submit">Add Song</button><hr>`;
 
-                    // append rows
-                    for (let i = 0; i < spot.length; i++) {
-                        let row = `<tr>
-                            <td>${spot[i].name}</td>
-                            <td>${spot[i].followers.total}</td>
-                            <td><button class="viewAlb">View Albums</button></td>
-                            <td><button class="viewSongs">View Songs</button></td>
-                        </tr>`;
-
-                        $('#table').append(row);
-
-                    }
+                    spotDiv.append(row);
                 }
-                else if (type === 'track') {
-                    spot = results.tracks.items;
-                    spotDiv.empty();
-
-                    // table header
-                    var resultTable = `<h4>Results</h4><table id="table"><tr><th></th><th></th><th></th><th></th></tr></table>`;
-                    spotDiv.append(resultTable);
-
-                    // table rows
-                    for (let i = 0; i < spot.length; i++) {
-                        let row = `<li>${spot[i].name}<br>
-                        ${spot[i].artists[0].name}<br>
-                        ${spot[i].album.name}<br>
-                        <img src="${spot[i].album.images[2].url}"><br>
-                        <button class="uk-button add-btn" uri= "${spot[i].uri}" data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
-                        class="addQ" action="submit">Add Song</button><hr>`;
-
-                    $('#table').append(row);
-
-                    }
-                }
-                else {
-                    spot = results.albums.items;
-                    spotDiv.empty();
-
-                    // table header
-                    var resultTable = `<h4>Results</h4><table id="table"><tr><th>Track</th><th>Artist</th><th>Album</th><th>Actions</th></tr></table>`;
-                    spotDiv.append(resultTable);
-
-                    // table rows
-                    for (let i = 0; i < spot.length; i++) {
-                        let row = `<tr>
-                            <td>${spot[i].name}</td>
-                            <td>${spot[i].artists[0].name}</td>
-                            <td><img src=${spot[i].images[2].url}></td>
-                            <td><button class="addBtn">View Songs</button></td>
-                        </tr>`;
-
-                        $('#table').append(row);
-
-                    }
-                }
-
-
-
+                
             });
 
         })
 
     })
-
-    //Function for deleting specific songs from a playlist
-    // $(document).on("click", ".delSong", function () {
-
-    
-    //     let remove = $(this).data("songid");
-        
-    //     console.log(id);
-
-        // $.ajax("/" + id, {
-        //     type: "DELETE"
-        // }).then(
-        //     function () {
-        //         console.log("deleted id ", id);
-
-        //         location.reload();
-        //     }
-        // );
-    //});
 
 
     // Function for handling what happens when the delete button is pressed
