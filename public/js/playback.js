@@ -22,12 +22,6 @@ window.onSpotifyWebPlaybackSDKReady = () => {
   // Playback status updates
   player.addListener('player_state_changed', state => { 
     console.log(state); 
-    console.log(state.track_window.current_track.id);
-    let track = state.track_window.current_track.id;
-    var embed = `<iframe src="https://open.spotify.com/embed/track/${track}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`
- 
-    $('#jbx').html(embed);
-    
 });
 
   // Ready
