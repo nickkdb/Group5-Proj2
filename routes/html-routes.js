@@ -41,7 +41,7 @@ function getToken(x) {
     form: {
       'grant_type': 'authorization_code',
       'code': x,
-      'client_secret': '95538355bddc4214afd5a54f2531fb06',
+      'client_secret': process.env.clientSecret,
       'client_id': '47574acd314042f0b65d7125bdbf9e12',
       'redirect_uri': 'http://localhost:8080/query'
     }
