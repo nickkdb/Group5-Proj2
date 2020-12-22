@@ -153,7 +153,7 @@ $(document).ready(function () {
                     spotDiv.empty();
 
                     // table header
-                    var resultTable = `<h4>Results</h4><table id="table"><tr><th>Track</th><th>Artist</th><th>Album</th><th>Actions</th></tr></table>`;
+                    var resultTable = `<h4>Results</h4><table id="table"><tr><th></th><th></th><th></th><th></th></tr></table>`;
                     spotDiv.append(resultTable);
 
                     // table rows
