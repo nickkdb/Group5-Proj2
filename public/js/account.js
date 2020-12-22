@@ -24,9 +24,12 @@ $(document).ready(function () {
                 for (let i = 0; i < pl.playlists.length; i++) {
                     let row = `<div class="uk-card uk-card-primary uk-card-hover uk-card-body uk-light">
                     <h3 id="${pl.playlists[i].id}">${pl.playlists[i].title}</h3>
-                    <a class="uk-button view-edit" href="/playlist/${pl.playlists[i].id}">View/Edit</a></div>`
+                    <a class="uk-button view-edit" href="/playlist/${pl.playlists[i].id}">View/Edit</a>
+                    <a class="uk-button delPlay" data-playlistid='${pl.playlists[i].id}' href="/playlist/${pl.playlists[i].id}">Delete</a></div>
+                    </div>`
                     $('#userPlaylists').append(row);
                     console.log(pl.playlists)
+        
                 }
 
             });
@@ -62,6 +65,24 @@ $(document).ready(function () {
             }
         );
     });
+
+        // Function for deleting a playlist
+        $(document).on("click", ".delPlay", function () {
+            console.log('clicked');
+            //targets playlist that was clicked
+            let deleted = $(this).data("playlistid");
+            console.log(deleted);
+            //ajax call to delete a playlist
+            $.ajax("/api/playlists/" + deleted, {
+                type: "DELETE"
+            }).then(
+                function () {
+                    console.log("deleted id ", deleted);
+                    location.reload();
+                }
+            );
+        });
+    
 
 })
 
