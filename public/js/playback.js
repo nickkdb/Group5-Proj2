@@ -128,9 +128,9 @@ $(document).ready(function () {
                         ${spot[i].artists[0].name}<br>
                         ${spot[i].album.name}<br>
                         <img src="${spot[i].album.images[2].url}"><br>
-                        <button class="uk-button delSong" uri= "${spot[i].uri}" data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
+                        <button class="addQ uk-button delSong" uri= "${spot[i].uri}" data-title="${spot[i].name}" data-album="${spot[i].album.name}" data-artist="${spot[i].artists[0].name}" id="${spot[i].id}" 
                         class="addQ" action="submit">Add to Queue</button>
-                        <button class="uk-button add-btn" data-uri= "${spot[i].uri}" class="playSong" action="submit">Play this song</button><hr>`;
+                        <button class="playSong uk-button add-btn" data-uri= "${spot[i].uri}" class="playSong" action="submit">Play this song</button><hr>`;
                         
 
                         spotDiv.append(row);
