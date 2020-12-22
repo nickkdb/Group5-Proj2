@@ -169,6 +169,22 @@ $(document).ready(function () {
         );
     });
 
+    // delete a song from a playlist
+    $(document).on("click", ".delSong", function (event) {
+
+        let del = {songId: $(this).data('songid'), playlistId: id}
+
+        $.ajax("/api/ps", {
+            type: "DELETE",
+            data: del
+        }).then(function(results){
+            alert("Your Song Was Deleted");
+            location.reload();
+        })
+
+
+    })
+
 
 
     // $(document).on("click",".addQ", function(event) {
